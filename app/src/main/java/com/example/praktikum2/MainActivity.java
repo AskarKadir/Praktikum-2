@@ -1,6 +1,8 @@
 package com.example.praktikum2;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,19 +39,32 @@ public class MainActivity extends AppCompatActivity {
                   //save passwd input user
                   passwd = passwordinput.getText().toString();
 
-                  if(user.equals("admin@corp.id") && passwd.equals("SAdmin")) {
+                  if (user.equals("admin@corp.id") && passwd.equals("SAdmin")) {
+                      Bundle b = new Bundle();
+                      //key parsing data dmasukkan kedalam bundle
+                      b.putString("a", user.trim());
+                      b.putString("b", passwd.trim());
+
+                      //membuat objek untuk pindah halaman
+                      Intent i = new Intent(getApplicationContext(), MainActivity2.class);
+                      //memasukkan bundle ke daslam intent
+                      i.putExtras(b);
+                      //berpindah ke halaman lain
+                      startActivity(i);
+
                       Toast t = Toast.makeText(getApplicationContext(),
                               "Anda Berhasil Login", Toast.LENGTH_LONG);
                       t.show();
-                  }else if (user.equals("admin@corp.id") && !passwd.equals("SAdmin")){
+
+                  } else if (user.equals("admin@corp.id") && !passwd.equals("SAdmin")) {
                       Toast t = Toast.makeText(getApplicationContext(),
                               "Password Anda Salah", Toast.LENGTH_LONG);
                       t.show();
-                  }else if(!user.equals("admin@copr.id") && passwd.equals("SAdmin")) {
+                  } else if (!user.equals("admin@copr.id") && passwd.equals("SAdmin")) {
                       Toast t = Toast.makeText(getApplicationContext(),
                               "Email Anda salah", Toast.LENGTH_LONG);
                       t.show();
-                  }else {
+                  } else {
                       Toast t = Toast.makeText(getApplicationContext(),
                               "Email dan Password Anda Salah", Toast.LENGTH_LONG);
                       t.show();
