@@ -41,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
                       Toast t = Toast.makeText(getApplicationContext(),
                               "Anda Berhasil Login", Toast.LENGTH_LONG);
                       t.show();
-                  }else if (user.equals("admin@corp.id") && passwd!="SAdmin"){
+                  }else if (user.equals("admin@corp.id") && !passwd.equals("SAdmin")){
                       Toast t = Toast.makeText(getApplicationContext(),
                               "Password Anda Salah", Toast.LENGTH_LONG);
                       t.show();
-                  }else if(user!="admin@corp.id" && passwd.equals("SAdmin")) {
+                  }else if(!user.equals("admin@copr.id") && passwd.equals("SAdmin")) {
                       Toast t = Toast.makeText(getApplicationContext(),
                               "Email Anda salah", Toast.LENGTH_LONG);
                       t.show();
