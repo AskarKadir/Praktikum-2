@@ -10,8 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Praktikum2">
         <activity
+            android:name=".DaftarAct"
+            android:exported="false"
+            android:parentActivityName=".MainActivity"/>
+        <activity
             android:name=".MainActivity2"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

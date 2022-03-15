@@ -1,9 +1,12 @@
 package com.example.praktikum2;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,6 +19,25 @@ public class MainActivity extends AppCompatActivity {
     EditText emailinput, passwordinput;
 
     String user, passwd;
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //kondisi
+        if (item.getItemId() == R.id.mnDaftar){
+            Intent i = new Intent(getApplicationContext(),DaftarAct.class);
+            startActivity(i);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //method untuk menampilkan menu
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,13 +61,13 @@ public class MainActivity extends AppCompatActivity {
                   //save passwd input user
                   passwd = passwordinput.getText().toString();
 
-                  if (user.equals("admin@corp.id") && passwd.equals("SAdmin")) {
+                  if (user.equals("1") && passwd.equals("1")) {
                       Bundle b = new Bundle();
                       //key parsing data dmasukkan kedalam bundle
                       b.putString("a", user.trim());
                       b.putString("b", passwd.trim());
 
-                      //membuat objek untuk pindah halaman
+                      //membuat objek untuk pindah halaman sehingga dapat memanggail java class yang baru
                       Intent i = new Intent(getApplicationContext(), MainActivity2.class);
                       //memasukkan bundle ke daslam intent
                       i.putExtras(b);
